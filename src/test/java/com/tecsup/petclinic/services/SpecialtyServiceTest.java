@@ -21,10 +21,10 @@ public class SpecialtyServiceTest {
 	@Test
 	public void createNew() {
 
-		String name = "Anthony";
-		String office = "AG254";
-		Integer f_open = 4;
-		Integer f_close = 5;
+		String name = "Jose";
+		String office = "BHG16";
+		Integer f_open = 1;
+		Integer f_close = 2;
 		Speciality speciality = new Speciality(name,office,f_open,f_close);
 
 		//Creando la especilidad mediante la interfaz service
