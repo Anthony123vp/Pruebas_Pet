@@ -1,53 +1,43 @@
-	package com.tecsup.petclinic.services;
+package com.tecsup.petclinic.services;
+
+import com.tecsup.petclinic.entities.Speciality;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+@SpringBootTest
+@Slf4j
+public class SpecialtyServiceTest {
 
 
-	import static org.junit.jupiter.api.Assertions.assertEquals;
-	import static org.junit.jupiter.api.Assertions.fail;
-
-	import com.tecsup.petclinic.entities.Specialty;
-	import com.tecsup.petclinic.exception.ElementExistsException;
-	import org.junit.jupiter.api.Test;
-
-	import org.springframework.beans.factory.annotation.Autowired;
-	import org.springframework.boot.test.context.SpringBootTest;
-
-	import lombok.extern.slf4j.Slf4j;
+	@Autowired
+   private SpecialityService specilityService;
 
 
-	@SpringBootTest
-	@Slf4j
-	public class SpecialtyServiceTest {
+	@Test
+	public void createNew() {
 
-		@Autowired
-		private SpecialityService specialityService;
+		String name = "Jose";
+		String office = "BHG16";
+		Integer f_open = 1;
+		Integer f_close = 2;
+		Speciality speciality = new Speciality(name,office,f_open,f_close);
 
-		/**
-		 *
-		 */
-		@Test
-		public void testUpdateSpecialityById() {
+		//Creando la especilidad mediante la interfaz service
+		Speciality specialityCreated = specilityService.save(speciality);
 
+		log.info("Speciality Created :" + specialityCreated.toString());
 
-			String name = "Adrian";
-			String office = "Back Developer";
-			Integer h_open = 3;
-			Integer h_close = 8;
-			Specialty specialtyUpdate = null;
+		assertNotNull(specialityCreated.getId());//Nos aseguramos que el id no sea nulo
+		assertEquals(name,specialityCreated.getName());//Nos aseguramos que el nombre guardo sea igual al nombre registrado
+		assertEquals(office,specialityCreated.getOffice());
+		assertEquals(f_open,specialityCreated.getH_open());
+		assertEquals(f_close,specialityCreated.getH_close());
 
-			try {
-
-				specialtyUpdate = specialityService.update(2, new Specialty("Adrian","Back Developer", 3, 8));
-
-			} catch (ElementExistsException e) {
-				fail(e.getMessage());
-			}
-			log.info("" + specialtyUpdate);
-
-			assertEquals(name, specialtyUpdate.getName());
-			assertEquals(office, specialtyUpdate.getOffice());
-			assertEquals(h_open, specialtyUpdate.getH_open());
-			assertEquals(h_close, specialtyUpdate.getH_close());
-
-		}
 
 	}
+}

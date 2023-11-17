@@ -1,8 +1,12 @@
 package com.tecsup.petclinic.services;
 
-import com.tecsup.petclinic.entities.Specialty;
-import com.tecsup.petclinic.exception.ElementExistsException;
+import com.tecsup.petclinic.entities.Speciality;
+import com.tecsup.petclinic.exception.SpecialityNotFoundException;
 
 public interface SpecialityService {
-   Specialty update(Integer id, Specialty specialty) throws ElementExistsException;
+
+    Speciality save (Speciality speciality);
+    Speciality find(Integer id) throws SpecialityNotFoundException;
+
+    void delete(Integer id);
 }
