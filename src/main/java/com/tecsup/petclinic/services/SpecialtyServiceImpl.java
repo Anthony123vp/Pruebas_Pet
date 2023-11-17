@@ -2,22 +2,28 @@ package com.tecsup.petclinic.services;
 
 import com.tecsup.petclinic.entities.Specialty;
 import com.tecsup.petclinic.exception.ElementExistsException;
-import com.tecsup.petclinic.repositories.SpecialityRepository;
-import lombok.RequiredArgsConstructor;
+import com.tecsup.petclinic.repositories.SpecialtyRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
-public class SpecialtyImplService implements ISpecialityService{
+//@RequiredArgsConstructor
+public class SpecialtyServiceImpl implements SpecialityService {
 
-   private final SpecialityRepository specialityRepository;
+   //@Autowired
+   private SpecialtyRepository specialityRepository;
+
+
+   public SpecialtyServiceImpl (SpecialtyRepository specialityRepository) {
+      this. specialityRepository = specialityRepository;
+   }
+
 
    @Override
    public Specialty update(Integer id, Specialty specialty) throws ElementExistsException {
       Specialty specialtyFind = specialityRepository.findById(id)
           .orElseThrow(() -> new ElementExistsException("Speciality with id "+id+" exists already in DB"));
       specialtyFind.setName(specialty.getName());
-      specialtyFind.setOffice(specialty.getName());
+      specialtyFind.setOffice(specialty.getOffice());
       specialtyFind.setH_open(specialty.getH_open());
       specialtyFind.setH_close(specialty.getH_close());
 

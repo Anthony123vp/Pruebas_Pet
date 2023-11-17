@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import com.jayway.jsonpath.internal.path.PathCompiler;
+import com.tecsup.petclinic.entities.Specialty;
+import com.tecsup.petclinic.exception.ElementExistsException;
 import com.tecsup.petclinic.repositories.PetRepository;
 import org.junit.jupiter.api.Test;
 import java.util.List;
@@ -23,8 +26,40 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class PetServiceTest {
 
+   // @Autowired
+    //private SpecialityService specialityService;
+
     @Autowired
     private PetService petService ;
+
+
+
+    /*@org.junit.Test
+    public void testUpdateSpecialityById() {
+
+
+        String name = "Adrian";
+        String office = "Back Developer";
+        Integer h_open = 3;
+        Integer h_close = 8;
+        Specialty specialtyUpdate = null;
+
+        try {
+
+            specialtyUpdate = specialityService.update(2, new Specialty("Adrian","Back Developer", 3, 8));
+
+        } catch (ElementExistsException e) {
+            PathCompiler.fail(e.getMessage());
+        }
+        log.info("" + specialtyUpdate);
+
+        assertEquals(name, specialtyUpdate.getName());
+        assertEquals(office, specialtyUpdate.getOffice());
+        assertEquals(h_open, specialtyUpdate.getH_open());
+        assertEquals(h_close, specialtyUpdate.getH_close());
+
+    }*/
+
 
     @Test
     public void testFindPetById() {

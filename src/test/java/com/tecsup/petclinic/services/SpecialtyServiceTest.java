@@ -1,14 +1,17 @@
 	package com.tecsup.petclinic.services;
 
+
+	import static org.junit.jupiter.api.Assertions.assertEquals;
+	import static org.junit.jupiter.api.Assertions.fail;
+
 	import com.tecsup.petclinic.entities.Specialty;
 	import com.tecsup.petclinic.exception.ElementExistsException;
-	import lombok.extern.slf4j.Slf4j;
-	import org.junit.Test;
+	import org.junit.jupiter.api.Test;
+
 	import org.springframework.beans.factory.annotation.Autowired;
 	import org.springframework.boot.test.context.SpringBootTest;
 
-	import static com.jayway.jsonpath.internal.path.PathCompiler.fail;
-	import static org.junit.jupiter.api.Assertions.assertEquals;
+	import lombok.extern.slf4j.Slf4j;
 
 
 	@SpringBootTest
@@ -16,7 +19,7 @@
 	public class SpecialtyServiceTest {
 
 		@Autowired
-		private SpecialtyImplService specialityService;
+		private SpecialityService specialityService;
 
 		/**
 		 *
