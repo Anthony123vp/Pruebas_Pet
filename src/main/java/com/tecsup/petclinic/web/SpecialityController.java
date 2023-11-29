@@ -1,6 +1,7 @@
 package com.tecsup.petclinic.web;
 
 import com.tecsup.petclinic.entities.Speciality;
+import com.tecsup.petclinic.exception.ElementExistsException;
 import com.tecsup.petclinic.exception.SpecialityNotFoundException;
 import com.tecsup.petclinic.services.SpecialityService;
 import lombok.extern.slf4j.Slf4j;
@@ -41,6 +42,16 @@ public class SpecialityController {
     @DeleteMapping("speciality/{id}")
     public  void deleteOne(@PathVariable Integer id){
          specialityService.delete(id);
+    }
+
+    @PutMapping("/speciality/{id}")
+    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody Speciality speciality) {
+        try {
+            Speciality updatedSpeciality = specialityService.update(id, speciality);
+            return ResponseEntity.ok(updatedSpeciality);
+        } catch (ElementExistsException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 
 }

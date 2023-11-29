@@ -77,4 +77,6 @@ public class SpecialityControllerTest {
         // También puedes verificar que el método delete del servicio se haya llamado con el ID correcto
         Mockito.verify(specialityService, Mockito.times(1)).delete(1);
     }
+
+
 }

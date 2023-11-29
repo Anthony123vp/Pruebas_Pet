@@ -6,13 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import com.jayway.jsonpath.internal.path.PathCompiler;
-import com.tecsup.petclinic.entities.Specialty;
-import com.tecsup.petclinic.exception.ElementExistsException;
-import com.tecsup.petclinic.repositories.PetRepository;
 import org.junit.jupiter.api.Test;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
